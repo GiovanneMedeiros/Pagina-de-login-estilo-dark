@@ -1,0 +1,48 @@
+/* Estilos básicos para o corpo da página */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+
+/* Estilo para o fundo animado */
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-color: #000;
+    background-image: linear-gradient(to right, #111 1px, transparent 1px),
+                      linear-gradient(to bottom, #111 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: move-bg 60s linear infinite;
+}
+
+/* Animação para mover o fundo */
+@keyframes move-bg {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 60px 60px; /* Altere para um valor maior para um movimento mais longo */
+    }
+}
+
+/* Camada escura sobre o fundo para manter a legibilidade */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.login-container {
+    z-index: 1;
+    position: relative;
+}

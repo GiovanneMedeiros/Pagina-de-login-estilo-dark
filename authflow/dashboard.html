@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuthFlow | Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="grid-overlay"></span>
+  </div>
+
+  <button id="themeToggle" class="theme-toggle" type="button" aria-label="Alternar tema">Alternar tema</button>
+
+  <main class="auth-layout">
+    <section class="auth-card reveal-up dashboard-card">
+      <header class="card-header">
+        <p class="eyebrow">Area logada</p>
+        <h1 id="welcomeMessage">Welcome, visitante</h1>
+        <p class="subtitle">Sua sessao esta ativa localmente neste navegador.</p>
+      </header>
+
+      <div class="dashboard-actions">
+        <button id="logoutButton" class="btn btn-danger" type="button">Logout</button>
+        <a href="index.html" class="btn btn-secondary" id="backLoginButton">Voltar para login</a>
+      </div>
+
+      <div id="dashboardMessage" class="message" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script src="js/auth.js" defer></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+      AuthFlow.requireAuth();
+      AuthFlow.initThemeToggle("themeToggle");
+
+      const welcomeMessage = document.getElementById("welcomeMessage");
+      const dashboardMessage = document.getElementById("dashboardMessage");
+      const logoutButton = document.getElementById("logoutButton");
+
+      const loggedUser = AuthFlow.getLoggedUser();
+      if (loggedUser) {
+        welcomeMessage.textContent = "Welcome, " + loggedUser.name;
+      }
+
+      logoutButton.addEventListener("click", function () {
+        AuthFlow.logout();
+        AuthFlow.showMessage(dashboardMessage, "Voce saiu com sucesso.", "success");
+        setTimeout(function () {
+          window.location.href = "index.html";
+        }, 700);
+      });
+    });
+  </script>
+</body>
+</html>

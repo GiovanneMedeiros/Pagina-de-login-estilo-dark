@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuthFlow | Cadastro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="grid-overlay"></span>
+  </div>
+
+  <button id="themeToggle" class="theme-toggle" type="button" aria-label="Alternar tema">Alternar tema</button>
+
+  <main class="auth-layout">
+    <section class="auth-card reveal-up">
+      <header class="card-header">
+        <p class="eyebrow">AuthFlow</p>
+        <h1>Criar nova conta</h1>
+        <p class="subtitle">Preencha os dados para iniciar sua jornada.</p>
+      </header>
+
+      <form id="registerForm" novalidate>
+        <div class="field-group">
+          <label for="registerName">Nome</label>
+          <input id="registerName" name="name" type="text" placeholder="Seu nome completo" autocomplete="name" required />
+          <small class="field-feedback" id="registerNameFeedback"></small>
+        </div>
+
+        <div class="field-group">
+          <label for="registerEmail">Email</label>
+          <input id="registerEmail" name="email" type="email" placeholder="seuemail@exemplo.com" autocomplete="email" required />
+          <small class="field-feedback" id="registerEmailFeedback"></small>
+        </div>
+
+        <div class="field-group">
+          <label for="registerPassword">Senha</label>
+          <div class="password-wrap">
+            <input id="registerPassword" name="password" type="password" placeholder="Minimo 6 caracteres" autocomplete="new-password" minlength="6" required />
+            <button class="password-toggle" type="button" data-target="registerPassword" aria-label="Mostrar ou ocultar senha">Mostrar</button>
+          </div>
+          <small class="field-feedback" id="registerPasswordFeedback"></small>
+        </div>
+
+        <div class="field-group">
+          <label for="registerConfirmPassword">Confirmar senha</label>
+          <div class="password-wrap">
+            <input id="registerConfirmPassword" name="confirmPassword" type="password" placeholder="Repita sua senha" autocomplete="new-password" minlength="6" required />
+            <button class="password-toggle" type="button" data-target="registerConfirmPassword" aria-label="Mostrar ou ocultar senha">Mostrar</button>
+          </div>
+          <small class="field-feedback" id="registerConfirmFeedback"></small>
+        </div>
+
+        <div id="registerMessage" class="message" role="status" aria-live="polite"></div>
+
+        <button id="registerButton" class="btn btn-primary" type="submit" data-loading-text="Cadastrando...">Criar conta</button>
+      </form>
+
+      <footer class="card-footer">
+        <p>Ja possui uma conta? <a href="index.html">Fazer login</a></p>
+      </footer>
+    </section>
+  </main>
+
+  <script src="js/auth.js" defer></script>
+  <script src="js/register.js" defer></script>
+</body>
+</html>
